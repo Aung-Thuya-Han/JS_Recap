@@ -24,3 +24,12 @@ td {
   border-bottom: 1px solid #ccc;
   padding: 0.5em 1em;
 }
+
+.highlight {
+  background: rgb(242, 199, 142);
+}
+
+dialog {
+  position: fixed;
+  top: 35%;
+}

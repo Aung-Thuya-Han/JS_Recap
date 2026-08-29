@@ -771,3 +771,57 @@ const restaurants = [
 ];
 
 // your code here
+
+console.log('restaurants', restaurants);
+
+const table = document.querySelector('table');
+
+console.log('table', table);
+
+console.log('first before', restaurants[0]);
+
+restaurants.sort((a, b) => a.name.localeCompare(b.name));
+
+console.log('first after', restaurants[0]);
+
+for (const restaurant of restaurants) {
+  const tr = document.createElement('tr');
+
+  const td1 = document.createElement('td');
+  const td2 = document.createElement('td');
+
+  td1.innerText = restaurant.name;
+  td2.innerText = restaurant.address;
+
+  tr.insertAdjacentElement('beforeend', td1);
+  tr.insertAdjacentElement('beforeend', td2);
+
+  tr.addEventListener('click', () => {
+    document
+      .querySelectorAll('.highlight')
+      .forEach(element => element.classList.remove('highlight'));
+
+    tr.classList.add('highlight');
+
+    const dialog = document.querySelector('dialog');
+
+    dialog.innerHTML = `
+      Restaurant name: ${restaurant.name}<br />
+      Address: ${restaurant.address}<br />
+      Postal code: ${restaurant.postalCode}<br />
+      City: ${restaurant.city}<br />
+      Phone number: ${restaurant.phone}<br />
+      Company: ${restaurant.company}<br />
+
+      <button>Close</button>
+    `;
+
+    dialog.querySelector('button').addEventListener('click', () => {
+      dialog.close();
+    });
+
+    dialog.show();
+  });
+
+  table.insertAdjacentElement('beforeend', tr);
+}
