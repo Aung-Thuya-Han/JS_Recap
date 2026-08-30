@@ -12,7 +12,7 @@ async function fetchData(url, options) {
 async function createUser() {
   try {
     const user = {
-      name: 'Aung',
+      name: 'John',
       job: 'Student',
     };
 
